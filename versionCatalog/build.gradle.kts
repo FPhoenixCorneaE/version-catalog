@@ -123,22 +123,20 @@ catalog {
         bundle("coil", listOf("coil", "coil-gif"))
 
         // test
-        library("test-core-ktx","androidx.test:core-ktx:1.4.0")
-        library("test-espresso-core","androidx.test.espresso:espresso-core:3.4.0")
-        library("test-junit-ktx","androidx.test.ext:junit-ktx:1.1.3")
+        library("test-core-ktx", "androidx.test:core-ktx:1.4.0")
+        library("test-espresso-core", "androidx.test.espresso:espresso-core:3.4.0")
+        library("test-junit-ktx", "androidx.test.ext:junit-ktx:1.1.3")
     }
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            create<MavenPublication>("release") {
-                from(components["versionCatalog"])
-                groupId = "com.github.FPhoenixCorneaE"
-                artifactId = "version-catalog"
-                version = "1.0.3"
-            }
+publishing {
+    publications {
+        // Creates a Maven publication called "release".
+        create<MavenPublication>("release") {
+            from(components["versionCatalog"])
+            groupId = "com.github.FPhoenixCorneaE"
+            artifactId = "version-catalog"
+            version = "1.0.4"
         }
     }
 }

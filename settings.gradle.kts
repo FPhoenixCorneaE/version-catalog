@@ -10,10 +10,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://jitpack.io")
     }
     versionCatalogs {
         create("deps") {
-            from(files("libs.versions.toml"))
+//            from("com.github.FPhoenixCorneaE:VersionCatalog:1.0.4")
         }
     }
 }
