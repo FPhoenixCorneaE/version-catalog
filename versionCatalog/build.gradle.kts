@@ -83,7 +83,7 @@ catalog {
         library("lifecycle-reactivestreams-ktx", "androidx.lifecycle", "lifecycle-reactivestreams-ktx")
             .versionRef("lifecycle")
         bundle("lifecycle", listOf(
-            "lifecycle-viewModel-ktx",
+            "lifecycle-viewmodel-ktx",
             "lifecycle-livedata-ktx",
             "lifecycle-runtime-ktx",
             "lifecycle-viewmodel-savedstate",
