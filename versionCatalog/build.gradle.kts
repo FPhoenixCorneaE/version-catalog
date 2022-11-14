@@ -132,11 +132,11 @@ catalog {
 publishing {
     publications {
         // Creates a Maven publication called "release".
-        create<MavenPublication>("release") {
+        create<MavenPublication>("maven") {
             from(components["versionCatalog"])
             groupId = "com.github.FPhoenixCorneaE"
-            artifactId = "version-catalog"
-            version = "1.0.4"
+            artifactId = "VersionCatalog"
+            version = "1.0.5"
         }
     }
 }
