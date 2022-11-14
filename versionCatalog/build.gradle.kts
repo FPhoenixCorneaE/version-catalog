@@ -138,7 +138,7 @@ afterEvaluate {
                 from(components["versionCatalog"])
                 groupId = "com.github.FPhoenixCorneaE"
                 artifactId = "version-catalog"
-                version = "1.0.1"
+                version = "1.0.2"
             }
         }
     }
