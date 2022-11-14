@@ -3,7 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     `version-catalog`
     `maven-publish`
-    signing
 }
 
 android {
@@ -138,12 +137,8 @@ afterEvaluate {
                 from(components["versionCatalog"])
                 groupId = "com.github.FPhoenixCorneaE"
                 artifactId = "version-catalog"
-                version = "1.0.2"
+                version = "1.0.3"
             }
         }
     }
-}
-
-signing {
-    sign(publishing.publications)
 }
