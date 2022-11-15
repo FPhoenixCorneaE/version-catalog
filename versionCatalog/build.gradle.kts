@@ -32,6 +32,7 @@ android {
     namespace = "com.fphoenixcorneae.version.catalog"
 }
 
+// 版本目录配置
 catalog {
     /**
      * version - 用于声明可以被依赖项引用的版本
@@ -129,14 +130,15 @@ catalog {
     }
 }
 
+// 配置 publishing
 publishing {
     publications {
-        // Creates a Maven publication called "release".
+        // Creates a Maven publication called "maven".
         create<MavenPublication>("maven") {
-            from(components["versionCatalog"])
             groupId = "com.github.FPhoenixCorneaE"
             artifactId = "VersionCatalog"
-            version = "1.0.5"
+            version = "1.0.6"
+            from(components["versionCatalog"])
         }
     }
 }
