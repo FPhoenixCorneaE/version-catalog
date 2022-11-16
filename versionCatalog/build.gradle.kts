@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -137,7 +139,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.FPhoenixCorneaE"
             artifactId = "VersionCatalog"
-            version = "1.0.7"
+            version = "1.0.8"
             from(components["versionCatalog"])
             pom {
                 name.set("version-catalog")
@@ -210,14 +212,24 @@ publishing {
         }
     }
 
-//    repositories {
-//        maven {
-//            isAllowInsecureProtocol = true
-//            url = uri("https://jitpack.io/")
-//            credentials {
-//                username = ""
-//                password = ""
-//            }
-//        }
-//    }
+    repositories {
+        maven {
+            isAllowInsecureProtocol = true
+            url = uri("https://jitpack.io/com/github/FPhoenixCorneaE/VersionCatalog")
+            credentials {
+                username = file("../local.properties").takeIf { it.canRead() }?.run {
+                    Properties().run {
+                        load(inputStream())
+                        this["maven.username"].toString()
+                    }
+                }
+                password = file("../local.properties").takeIf { it.canRead() }?.run {
+                    Properties().run {
+                        load(inputStream())
+                        this["maven.password"].toString()
+                    }
+                }
+            }
+        }
+    }
 }
