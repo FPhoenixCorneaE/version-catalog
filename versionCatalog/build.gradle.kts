@@ -137,8 +137,87 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.FPhoenixCorneaE"
             artifactId = "VersionCatalog"
-            version = "1.0.6"
+            version = "1.0.7"
             from(components["versionCatalog"])
+            pom {
+                name.set("version-catalog")
+                description.set("AGP 7.0.0以上依赖库统一版本号管理。")
+                url.set("https://github.com/FPhoenixCorneaE/VersionCatalog")
+                inceptionYear.set("2022")
+                scm {
+                    url.set("https://github.com/FPhoenixCorneaE/VersionCatalog")
+                    connection.set("scm:git:https://github.com/FPhoenixCorneaE/VersionCatalog.git")
+                    developerConnection.set("scm:git:https://github.com/FPhoenixCorneaE/VersionCatalog.git")
+                }
+                licenses {
+                    license {
+                        name.set("The Apache Software License, Version 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                        distribution.set("repo")
+                        comments.set("A business-friendly OSS license")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("FPhoenixCorneaE")
+                        name.set("FPhoenixCorneaE")
+                        email.set("3453207571@qq.com")
+                        url.set("https://github.com/FPhoenixCorneaE/VersionCatalog")
+                    }
+                }
+                issueManagement {
+                    system.set("Github")
+                    url.set("https://github.com/FPhoenixCorneaE/VersionCatalog")
+                }
+                withXml {
+                    // Creating additional node for dependencies
+                    val dependenciesNode = asNode().appendNode("dependencies")
+                    project.configurations.all {
+                        val name = this.name
+                        // Defining configuration names from which dependencies will be taken (implementation and api)
+                        if (name != "implementation" && name != "compile" && name != "api") {
+                            return@all
+                        }
+                        println(this)
+                        dependencies.forEach {
+                            println(it)
+                            if (it.name == "unspecified") {
+                                // 忽略无法识别的
+                                return@forEach
+                            }
+                            val dependencyNode = dependenciesNode.appendNode("dependency")
+                            dependencyNode.appendNode("groupId", it.group)
+                            dependencyNode.appendNode("artifactId", it.name)
+                            dependencyNode.appendNode("version", it.version)
+                            if (name == "api" || name == "compile") {
+                                dependencyNode.appendNode("scope", "compile")
+                            } else { // implementation
+                                dependencyNode.appendNode("scope", "runtime")
+                            }
+                            // if there are any exclusions in dependency
+                            if (excludeRules.isNotEmpty()) {
+                                val exclusionsNode = dependencyNode.appendNode("exclusions")
+                                excludeRules.forEach {
+                                    val exclusionNode = exclusionsNode.appendNode("exclusion")
+                                    exclusionNode.appendNode("groupId", it.group)
+                                    exclusionNode.appendNode("artifactId", it.module)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
+
+//    repositories {
+//        maven {
+//            isAllowInsecureProtocol = true
+//            url = uri("https://jitpack.io/")
+//            credentials {
+//                username = ""
+//                password = ""
+//            }
+//        }
+//    }
 }
