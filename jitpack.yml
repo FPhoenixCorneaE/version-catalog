@@ -1,2 +1,15 @@
+# jitpack.yml
+
+
 jdk:
   - openjdk17
+
+# 指定项目的Maven坐标
+group: com.github.FPhoenixCorneaE
+module: version-catalog
+
+# 指定版本号
+version: 1.1.1
+
+# 指定发布类型为Release
+type: release

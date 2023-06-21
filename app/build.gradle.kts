@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.fphoenixcorneae.version.catalog"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 100
         versionName = "1.0.0"
 

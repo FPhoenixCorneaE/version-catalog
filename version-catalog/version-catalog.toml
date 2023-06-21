@@ -1,0 +1,4 @@
+[libraries]
+[libraries.VersionCatalog]
+git = "https://github.com/FPhoenixCorneaE/VersionCatalog.git"
+branch = "main"

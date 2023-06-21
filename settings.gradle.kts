@@ -15,7 +15,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("deps") {
-//            from("com.github.FPhoenixCorneaE:VersionCatalog:1.0.8")
+//            from("com.github.FPhoenixCorneaE:VersionCatalog:1.1.0")
         }
     }
 }
