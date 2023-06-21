@@ -138,7 +138,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.FPhoenixCorneaE"
             artifactId = "version-catalog"
-            version = "1.0.8"
+            version = "1.1.0"
             from(components["versionCatalog"])
             pom {
                 name.set("version-catalog")
