@@ -19,8 +19,6 @@ dependencyResolutionManagement {
         }
     }
 }
-// 开启 VERSION_CATALOGS
-enableFeaturePreview("VERSION_CATALOGS")
 
 rootProject.name = "VersionCatalog"
 include(":app")

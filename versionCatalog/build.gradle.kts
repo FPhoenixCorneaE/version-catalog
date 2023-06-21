@@ -8,11 +8,10 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 32
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -138,7 +137,7 @@ publishing {
         // Creates a Maven publication called "maven".
         create<MavenPublication>("maven") {
             groupId = "com.github.FPhoenixCorneaE"
-            artifactId = "VersionCatalog"
+            artifactId = "version-catalog"
             version = "1.0.8"
             from(components["versionCatalog"])
             pom {
