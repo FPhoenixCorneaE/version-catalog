@@ -3,7 +3,6 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven("https://jitpack.io")
     }
 }
 dependencyResolutionManagement {
@@ -15,7 +14,8 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("deps") {
-//            from("com.github.FPhoenixCorneaE:VersionCatalog:1.1.2")
+//            from("com.github.FPhoenixCorneaE:VersionCatalog:1.1.5")
+//            from(files("$rootDir/versionCatalog/build/version-catalog/libs.versions.toml"))
         }
     }
 }
