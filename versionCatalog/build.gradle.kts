@@ -137,6 +137,9 @@ publishing {
         // Creates a Maven publication called "maven".
         create<MavenPublication>("maven") {
             from(components["versionCatalog"])
+            groupId = "com.github.FPhoenixCorneaE"
+            artifactId = "version-catalog"
+            version = "1.1.4"
         }
     }
 }
