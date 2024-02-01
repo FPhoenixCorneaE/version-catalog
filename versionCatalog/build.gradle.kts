@@ -22,11 +22,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     namespace = "com.fphoenixcorneae.version.catalog"
 }
@@ -139,7 +139,7 @@ publishing {
             from(components["versionCatalog"])
             groupId = "com.github.FPhoenixCorneaE"
             artifactId = "version-catalog"
-            version = "1.1.4"
+            version = "1.1.5"
         }
     }
 }
