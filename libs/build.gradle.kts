@@ -3,7 +3,11 @@ plugins {
     id("org.jetbrains.kotlin.android")
     `version-catalog`
     `maven-publish`
+    signing
 }
+
+group = "io.github.FPhoenixCorneaE"
+version = "1.0.1"
 
 android {
     compileSdk = 33
@@ -136,10 +140,56 @@ publishing {
     publications {
         // Creates a Maven publication called "maven".
         create<MavenPublication>("maven") {
-            from(components["versionCatalog"])
-            groupId = "com.github.FPhoenixCorneaE"
             artifactId = "version-catalog"
-            version = "1.1.5"
+            from(components["versionCatalog"])
+
+            pom {
+                name.set("libs-versions")
+                description.set("AGP 7.0.0以上依赖库统一版本号管理。")
+                url.set("https://github.com/FPhoenixCorneaE/version-catalog")
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("https://github.com/FPhoenixCorneaE/version-catalog/blob/main/LICENSE")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("1646")
+                        name.set("FPhoenixCorneaE")
+                        email.set("834532786@qq.com")
+                    }
+                }
+                scm {
+                    url.set("https://github.com/FPhoenixCorneaE/version-catalog")
+                    connection.set("https://github.com/FPhoenixCorneaE/version-catalog.git")
+                    developerConnection.set("https://github.com/FPhoenixCorneaE/version-catalog.git")
+                }
+            }
         }
+    }
+    repositories {
+        maven {
+            name = "OSSRH"
+
+            val releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            val snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+
+            setUrl(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            credentials {
+                username = findProperty("MAVEN_USERNAME") as String?
+                password = findProperty("MAVEN_PASSWORD") as String?
+            }
+        }
+    }
+    signing {
+        // gpg --list-keys --keyid-format 0xSHORT
+        val defaultKeyId = findProperty("SIGNING_KEY_ID") as String?
+        // gpg --armor --export-secret-key
+        val defaultSecretKey = findProperty("SIGNING_KEY") as String?
+        val defaultPassword = findProperty("SIGNING_PASSWORD") as String?
+        useInMemoryPgpKeys(defaultKeyId, defaultSecretKey, defaultPassword)
+        useGpgCmd()
+        sign(publishing.publications)
     }
 }
