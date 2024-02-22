@@ -1,15 +1,18 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(deps.plugins.android.application)
+    alias(deps.plugins.kotlin.android)
+    alias(deps.plugins.navigation.safeargs)
+    id(deps.plugins.kotlin.kapt.get().pluginId)
+    id(deps.plugins.kotlin.parcelize.get().pluginId)
 }
 
 android {
-    compileSdk = 33
+    compileSdk = deps.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.fphoenixcorneae.version.catalog"
-        minSdk = 21
-        targetSdk = 33
+        minSdk = deps.versions.minSdk.get().toInt()
+        targetSdk = deps.versions.targetSdk.get().toInt()
         versionCode = 100
         versionName = "1.0.0"
 
@@ -34,6 +37,8 @@ android {
 
 dependencies {
 
+    implementation(deps.bundles.lifecycle)
+    kapt(deps.lifecycle.compiler)
     implementation(deps.coil.gif)
 
     implementation("androidx.core:core-ktx:1.7.0")

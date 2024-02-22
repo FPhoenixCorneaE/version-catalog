@@ -13,8 +13,8 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("deps") {
-            from("io.github.FPhoenixCorneaE:version-catalog:1.0.1")
-//            from(files("$rootDir/versionCatalog/build/version-catalog/libs.versions.toml"))
+//            from("io.github.FPhoenixCorneaE:version-catalog:1.0.1")
+            from(files("$rootDir/libs/build/version-catalog/libs.versions.toml"))
         }
     }
 }

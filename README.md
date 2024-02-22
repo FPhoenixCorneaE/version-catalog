@@ -21,8 +21,15 @@ dependencyResolutionManagement {
 }
 ```
 
-```kotlin
-dependencies {
-    implementation(deps.coil.gif)
-}
-```
+[Migrate your build to version catalogs](https://developer.android.google.cn/build/migrate-to-catalogs?hl=en)
+
+### 更新日志
+
+#### 2024-02-22
+build: version-catalog upgrade to 1.0.2
+
+1、version: add "androidGradlePlugin", compileSdk、targetSdk upgrade to 34, lifecycle upgrade to 2.7.0;
+2、plugin: add "android-application"、"android-library"、"kotlin-parcelize";
+3、library: add "lifecycle-viewmodel-compose"、"lifecycle-runtime-compose"、"lifecycle-compiler"、"lifecycle-runtime-testing";
+4、bundle: lifecycle add "lifecycle-viewmodel-compose"、"lifecycle-runtime-compose";
+

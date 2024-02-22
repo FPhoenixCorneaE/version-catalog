@@ -7,10 +7,10 @@ plugins {
 }
 
 group = "io.github.FPhoenixCorneaE"
-version = "1.0.1"
+version = "1.0.2"
 
 android {
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 21
@@ -44,14 +44,18 @@ catalog {
      * bundle  - 用于声明依赖包
      */
     versionCatalog {
-        version("compileSdk", "33")
+        version("androidGradlePlugin", "8.2.2")
+        version("compileSdk", "34")
         version("minSdk", "21")
-        version("targetSdk", "33")
+        version("targetSdk", "34")
         version("kotlin", "1.7.20")
 
         // plugin
+        plugin("android-application", "com.android.application").versionRef("androidGradlePlugin")
+        plugin("android-library", "com.android.library").versionRef("androidGradlePlugin")
         plugin("kotlin-android", "org.jetbrains.kotlin.android").versionRef("kotlin")
         plugin("kotlin-kapt", "org.jetbrains.kotlin.kapt").versionRef("kotlin")
+        plugin("kotlin-parcelize", "org.jetbrains.kotlin.plugin.parcelize").versionRef("kotlin")
 
         // androidx
         library("androidx-activity-ktx", "androidx.activity", "activity-ktx").version("1.6.1")
@@ -74,10 +78,16 @@ catalog {
         library("androidx-swiperefreshlayout", "androidx.swiperefreshlayout", "swiperefreshlayout").version("1.1.0")
 
         // lifecycle
-        version("lifecycle", "2.5.1")
+        version("lifecycle", "2.7.0")
         library("lifecycle-viewmodel-ktx", "androidx.lifecycle", "lifecycle-viewmodel-ktx").versionRef("lifecycle")
+        library(
+            "lifecycle-viewmodel-compose",
+            "androidx.lifecycle",
+            "lifecycle-viewmodel-compose"
+        ).versionRef("lifecycle")
         library("lifecycle-livedata-ktx", "androidx.lifecycle", "lifecycle-livedata-ktx").versionRef("lifecycle")
         library("lifecycle-runtime-ktx", "androidx.lifecycle", "lifecycle-runtime-ktx").versionRef("lifecycle")
+        library("lifecycle-runtime-compose", "androidx.lifecycle", "lifecycle-runtime-compose").versionRef("lifecycle")
         library("lifecycle-viewmodel-savedstate", "androidx.lifecycle", "lifecycle-viewmodel-savedstate")
             .versionRef("lifecycle")
         library("lifecycle-common-java8", "androidx.lifecycle", "lifecycle-common-java8").versionRef("lifecycle")
@@ -85,11 +95,15 @@ catalog {
         library("lifecycle-process", "androidx.lifecycle", "lifecycle-process").versionRef("lifecycle")
         library("lifecycle-reactivestreams-ktx", "androidx.lifecycle", "lifecycle-reactivestreams-ktx")
             .versionRef("lifecycle")
+        library("lifecycle-compiler", "androidx.lifecycle", "lifecycle-compiler").versionRef("lifecycle")
+        library("lifecycle-runtime-testing", "androidx.lifecycle", "lifecycle-runtime-testing").versionRef("lifecycle")
         bundle(
             "lifecycle", listOf(
                 "lifecycle-viewmodel-ktx",
+                "lifecycle-viewmodel-compose",
                 "lifecycle-livedata-ktx",
                 "lifecycle-runtime-ktx",
+                "lifecycle-runtime-compose",
                 "lifecycle-viewmodel-savedstate",
                 "lifecycle-common-java8",
                 "lifecycle-service",
