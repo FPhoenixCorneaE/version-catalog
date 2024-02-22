@@ -28,8 +28,8 @@ dependencyResolutionManagement {
 #### 2024-02-22
 build: version-catalog upgrade to 1.0.2
 
-1、version: add "androidGradlePlugin", compileSdk、targetSdk upgrade to 34, lifecycle upgrade to 2.7.0;
-2、plugin: add "android-application"、"android-library"、"kotlin-parcelize";
-3、library: add "lifecycle-viewmodel-compose"、"lifecycle-runtime-compose"、"lifecycle-compiler"、"lifecycle-runtime-testing";
+1、version: add "androidGradlePlugin", compileSdk、targetSdk upgrade to 34, lifecycle upgrade to 2.7.0;<br>
+2、plugin: add "android-application"、"android-library"、"kotlin-parcelize";<br>
+3、library: add "lifecycle-viewmodel-compose"、"lifecycle-runtime-compose"、"lifecycle-compiler"、"lifecycle-runtime-testing";<br>
 4、bundle: lifecycle add "lifecycle-viewmodel-compose"、"lifecycle-runtime-compose";
 
